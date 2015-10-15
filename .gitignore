@@ -1,0 +1,17 @@
+project/
+target
+
+#IDEA stuff
+/.idea/tasks.xml
+/.idea/dictionaries
+/.idea/libraries
+/.idea/modules
+/.idea/workspace.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/compiler.xml
+/.idea/scala_compiler.xml
+/.idea/sbt.xml
+/.idea/scopes/scope_settings.xml
+/.idea/encodings.xml
+/.idea/vcs.xml
