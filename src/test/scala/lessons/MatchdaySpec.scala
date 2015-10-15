@@ -3,6 +3,8 @@ package lessons
 import lessons.model.{Redcard, Match, Participant}
 import org.scalatest.{GivenWhenThen, FeatureSpec}
 
+import scala.collection.immutable.TreeSet
+
 class MatchdaySpec extends FeatureSpec with GivenWhenThen {
 
   feature("A new Matchday") {
@@ -21,7 +23,7 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
       val matchday = Matchday.emptyMatchDay
 
       When("Add 5 matches")
-      val updatedMatchday = matchday.addMatches(Matchday.match1, Matchday.match2, Matchday.match3)
+      val updatedMatchday = matchday.addMatches(Match.match1, Match.match2, Match.match3)
 
       Then("Number of matches - equal to Matchday1")
       assert(updatedMatchday.numberOfMatches == 3)
@@ -63,13 +65,13 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
 
       Then("Some are present, some not..")
       val playsOnAllMatchdays = Matchday.playsOnAllMatchdays(matchday :: matchday2 :: Nil)
-      assert(playsOnAllMatchdays.contains(Matchday.bayern))
-      assert(playsOnAllMatchdays.contains(Matchday.dortmund))
-      assert(playsOnAllMatchdays.contains(Matchday.koeln))
-      assert(playsOnAllMatchdays.contains(Matchday.leverkusen))
-      assert(playsOnAllMatchdays.contains(Matchday.schalke))
-      assert(!playsOnAllMatchdays.contains(Matchday.hamburg))
-      assert(!playsOnAllMatchdays.contains(Matchday.kaiserslautern))
+      assert(playsOnAllMatchdays.contains(Participant.bayern))
+      assert(playsOnAllMatchdays.contains(Participant.dortmund))
+      assert(playsOnAllMatchdays.contains(Participant.koeln))
+      assert(playsOnAllMatchdays.contains(Participant.leverkusen))
+      assert(playsOnAllMatchdays.contains(Participant.schalke))
+      assert(!playsOnAllMatchdays.contains(Participant.hamburg))
+      assert(!playsOnAllMatchdays.contains(Participant.kaiserslautern))
     }
 
     scenario("Group by Participant") {
@@ -78,9 +80,15 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
       val matchday = Matchday.matchday1
       val matchday2 = Matchday.matchday2
 
-      val groupedByParticipant
+      val mappedByParticipant = Matchday.mappedByParticipant(matchday :: matchday2 :: Nil)
 
-      Then()
+      assert(mappedByParticipant.get(Participant.bayern) == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.dortmund) == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.koeln) == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.leverkusen) == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.schalke) == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.hamburg) == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.bayern) == TreeSet(matchday, matchday2))
     }
 
     scenario("Sorted by Participant name") {
