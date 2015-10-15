@@ -18,18 +18,6 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
       assert(numberOfMatches == 0)
     }
 
-    scenario("Add matches to a new matchday") {
-      Given("A new matchday")
-      val matchday = Matchday.emptyMatchDay
-
-      When("Add 5 matches")
-      val updatedMatchday = matchday.addMatches(Match.match1, Match.match2, Match.match3)
-
-      Then("Number of matches - equal to Matchday1")
-      assert(updatedMatchday.numberOfMatches == 3)
-      assert(updatedMatchday == Matchday.matchday1)
-    }
-
     scenario("Number of participants") {
       Given("Matchday1")
       val matchday = Matchday.matchday1
@@ -46,6 +34,17 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
       Then("Number of betmarkets")
       val numberOfBetmarkets = matchday.numberOfBetmarkets
       assert(numberOfBetmarkets == 90)
+    }
+
+    scenario("Add matches to a new matchday") {
+      Given("A new matchday")
+      val matchday = Matchday.emptyMatchDay
+
+      When("Add 3 matches")
+      val updatedMatchday = matchday.addMatches(Match.match1, Match.match2, Match.match3)
+
+      Then("Number of matches - equal to Matchday1")
+      assert(updatedMatchday.numberOfMatches == 3)
     }
 
     scenario("Number of redcards in sections") {
