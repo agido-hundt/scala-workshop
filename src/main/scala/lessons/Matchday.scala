@@ -11,7 +11,7 @@ object Matchday {
 
   def redcardsInSection(matchdays: List[Matchday]): (Int, Int) = ??? // TODO Write body
 
-  def playsOnAllMatchdays(matchdays: List[Matchday]): List[Participant] = ??? // TODO Write body
+  def playsOnAllMatchdays(matchdays: List[Matchday]): Set[Participant] = ??? // TODO Write body
 
   def mappedByParticipant(matchdays: List[Matchday]): Map[Participant, TreeSet[Matchday]] = ???
 }
