@@ -1,6 +1,6 @@
 # scala-workshop
 
-Vorbereitung
+## Vorbereitung
 * Java8 installiert
 * IntelliJ Idea 15 Community Edition installiert https://www.jetbrains.com/idea/nextversion/
 * Dort drin bitte das Scala-Plugin installieren ( Preferences -> Plugins -> Install Jetbrains Plugin -> Scala)
@@ -11,7 +11,7 @@ Vorbereitung
 ```
 * Projekt in Idea importieren (Durch Auswahl des build.sbt Files)
 
-Ablauf des Workshops
+## Ablauf des Workshops
 * Kurze Scalasyntax Einführung
 * Implementierung einiger Funktionen, um Testfälle "grün" zu machen
 * Kurze Akka Einführung
