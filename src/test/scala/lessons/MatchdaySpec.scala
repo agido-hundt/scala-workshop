@@ -86,6 +86,22 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
       assert(!playsOnAllMatchdays.contains(Participant.hamburg))
       assert(!playsOnAllMatchdays.contains(Participant.kaiserslautern))
     }
+
+    scenario("Mapped by Participant") {
+      Given("Two matchdays")
+      val matchday = Matchday.matchday1
+      val matchday2 = Matchday.matchday2
+
+      val mappedByParticipant = Matchday.mappedByParticipant(matchday :: matchday2 :: Nil)
+
+      assert(mappedByParticipant.get(Participant.bayern).get == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.dortmund).get == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.koeln).get == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.leverkusen).get == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.schalke).get == TreeSet(matchday, matchday2))
+      assert(mappedByParticipant.get(Participant.hamburg).get == TreeSet(matchday2))
+      assert(mappedByParticipant.get(Participant.kaiserslautern).get == TreeSet(matchday))
+    }
   }
 
 }

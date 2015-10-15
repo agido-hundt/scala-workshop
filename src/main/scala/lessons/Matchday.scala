@@ -13,7 +13,7 @@ object Matchday {
 
   def playsOnAllMatchdays(matchdays: List[Matchday]): Set[Participant] = ??? // TODO Write body
 
-  def mappedByParticipant(matchdays: List[Matchday]): Map[Participant, TreeSet[Matchday]] = ???
+  def mappedByParticipant(matchdays: List[Matchday]): Map[Participant, TreeSet[Matchday]] = ??? // TODO Write body
 }
 
 case class Matchday(day: Option[Int], matches: List[Match]) extends Comparable[Matchday] {
