@@ -26,7 +26,7 @@ case class Matchday(day: Option[Int], matches: List[Match]) extends Comparable[M
 
   def addMatches(matchesToAdd: Match*): Matchday = ??? // TODO Write body
 
-  def participantsSortedByName: TreeSet[Participant] = ??? // TODO Write body
+  def participantsSortedByName: List[Participant] = ??? // TODO Write body
 
   override def compareTo(o: Matchday): Int = ??? // TODO Write compareTo method based on [[Matchday.day]]
 }

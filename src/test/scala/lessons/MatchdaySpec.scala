@@ -47,6 +47,20 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
       assert(updatedMatchday.numberOfMatches == 3)
     }
 
+    scenario("Sorted by Participant name") {
+      Given("Two matchdays1")
+      val matchday = Matchday.matchday1
+
+      Then("Check the order")
+      val participantsSortedByName = matchday.participantsSortedByName
+      assert(participantsSortedByName.indexOf(Participant.bayern) == 0)
+      assert(participantsSortedByName.indexOf(Participant.dortmund) == 1)
+      assert(participantsSortedByName.indexOf(Participant.kaiserslautern) == 2)
+      assert(participantsSortedByName.indexOf(Participant.koeln) == 3)
+      assert(participantsSortedByName.indexOf(Participant.leverkusen) == 4)
+      assert(participantsSortedByName.indexOf(Participant.schalke) == 5)
+    }
+
     scenario("Number of redcards in sections") {
       Given("Two matchdays1")
       val matchday = Matchday.matchday1
@@ -72,34 +86,6 @@ class MatchdaySpec extends FeatureSpec with GivenWhenThen {
       assert(!playsOnAllMatchdays.contains(Participant.hamburg))
       assert(!playsOnAllMatchdays.contains(Participant.kaiserslautern))
     }
-
-    scenario("Group by Participant") {
-      Given("Two matchdays")
-      Given("Two matchdays")
-      val matchday = Matchday.matchday1
-      val matchday2 = Matchday.matchday2
-
-      val mappedByParticipant = Matchday.mappedByParticipant(matchday :: matchday2 :: Nil)
-
-      assert(mappedByParticipant.get(Participant.bayern) == TreeSet(matchday, matchday2))
-      assert(mappedByParticipant.get(Participant.dortmund) == TreeSet(matchday, matchday2))
-      assert(mappedByParticipant.get(Participant.koeln) == TreeSet(matchday, matchday2))
-      assert(mappedByParticipant.get(Participant.leverkusen) == TreeSet(matchday, matchday2))
-      assert(mappedByParticipant.get(Participant.schalke) == TreeSet(matchday, matchday2))
-      assert(mappedByParticipant.get(Participant.hamburg) == TreeSet(matchday, matchday2))
-      assert(mappedByParticipant.get(Participant.bayern) == TreeSet(matchday, matchday2))
-    }
-
-    scenario("Sorted by Participant name") {
-      Given("Two matchdays1")
-      val matchday = Matchday.matchday1
-
-      Then("Check the order")
-      val participantsSortedByName = matchday.participantsSortedByName
-      // TODO Write assertions
-    }
-
-
   }
 
 }
