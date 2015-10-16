@@ -12,7 +12,7 @@
 * Projekt in Idea importieren (Durch Auswahl des build.sbt Files)
 
 ## Ablauf des Workshops
-* Kurze Scalasyntax Einführung (Hilfreicher Link http://docs.scala-lang.org/cheatsheets/)
+* Kurze Scalasyntax Einführung
 * Implementierung einiger Funktionen, um Testfälle "grün" zu machen
 * Kurze Akka Einführung
 * Implementierung von Aktoren und deren Kommunikation
@@ -20,3 +20,6 @@
 ```
 1. git push origin <nachname>
 ```
+## Hilfreich
+* http://www.scalatutorial.de/index.html
+* http://docs.scala-lang.org/cheatsheets
