@@ -23,3 +23,4 @@
 ## Hilfreich
 * http://www.scalatutorial.de/index.html
 * http://docs.scala-lang.org/cheatsheets
+* http://twitter.github.io/effectivescala/
