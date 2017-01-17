@@ -1,48 +1,48 @@
 import scala.util.Random
 
 /**
-    Classes and objects
- */
-
+  * Classes, traits and objects
+  */
 trait IntroClasses
 
-class IntroClass(name: String) extends IntroClasses {
+class IntroClass(name: String) extends IntroClasses
 
-}
 // Companion object
 object IntroClass {
-  val demoIntro = new IntroClass("Hallo")
+  val default = new IntroClass("Hallo")
 }
 
+// Case class
 case class IntroCaseClass(name: String) extends IntroClasses
 
+// Case object
 case object IntroCaseObject
 
 
 // New object
 val introClass = new IntroClass("Hallo")
 
-// Static access
-// hashCode() not present
-// val className = IntroClass.demoIntro.name
-
-// Case class object creation
-// hashCode() present
-val caseClassName = IntroCaseClass("Hallo").name
-// Singleton
-val introCaseObject = IntroCaseObject
+val introCaseClass = IntroCaseClass("Hallo")
 
 
+// equals / hashCode
+
+val anotherIntroClass = new IntroClass("Hallo")
+
+Map(introClass -> 5, anotherIntroClass -> 6)
+
+val anotherIntroCaseClass = IntroCaseClass("Hallo")
+
+Map(introCaseClass -> 5, anotherIntroCaseClass -> 6)
 
 
-
-
-
+// copy
+val modifiedAnotherIntroCaseClass = anotherIntroCaseClass.copy(name = "Hallo Welt")
 
 
 /**
-   Methoden und Funktionen
-*/
+  * Methods, call-by-value, call-by-name
+  */
 
 case class IntroCaseClassWithMethod(name: String) {
 
@@ -63,13 +63,9 @@ case class IntroCaseClassWithMethodRequiringAFunction(name: String) {
 IntroCaseClassWithMethodRequiringAFunction("LaLeLu").lengthName(name => Random.nextInt(name.length))
 
 
-
-
-
-
 /**
-    Options and Pattern Matching
-*/
+  * Options and Pattern Matching
+  */
 
 case class IntroCaseClassWithOption(maybeName: Option[String] = None)
 
@@ -95,11 +91,21 @@ maybeIntroClassNone.maybeName match {
 
 
 /**
-    Collections
-*/
+  * Higher order functions
+  */
 
 val aList = IntroCaseClassWithMethod("LaLeLu") :: IntroCaseClassWithMethod("Lulu") :: Nil
 
-aList map (_.name)
+// .map
 
-aList map (_.lengthOfName(2))
+aList.map(_.name)
+
+aList.map(_.lengthOfName(2))
+
+// .flatMap
+
+// .groupBy
+
+// .sum
+
+// .reduce
