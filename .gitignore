@@ -1,7 +1,11 @@
 project/
 target
 
+.DS_Store
+*/.DS_Store
+
 #IDEA stuff
+*/.idea/
 /.idea/tasks.xml
 /.idea/dictionaries
 /.idea/libraries
