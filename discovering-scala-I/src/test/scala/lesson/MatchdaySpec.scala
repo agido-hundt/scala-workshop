@@ -91,7 +91,7 @@ class MatchDaySpec extends FeatureSpec with GivenWhenThen {
       val matchDay = MatchDay.MatchDay1
       val matchDay2 = MatchDay.MatchDay2
 
-      val mappedByParticipant: Map[Team, TreeSet[MatchDay]] = MatchDay.mappedByParticipant(matchDay :: matchDay2 :: Nil)
+      val mappedByParticipant: Map[Team, Set[MatchDay]] = MatchDay.mappedByParticipant(matchDay :: matchDay2 :: Nil)
 
       Then("mappedByParticipant")
       assert(mappedByParticipant.size == 7)

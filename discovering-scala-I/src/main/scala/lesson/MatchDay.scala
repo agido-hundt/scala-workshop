@@ -1,7 +1,5 @@
 package lesson
 
-import scala.collection.immutable.TreeSet
-
 case class MatchDay(day: Int, matches: List[Match]) extends Comparable[MatchDay] {
 
   def numberOfMatches: Int = ??? // TODO Write body
@@ -39,6 +37,6 @@ object MatchDay {
   /**
     * Returns a map,
     */
-  def mappedByParticipant(matchdays: List[MatchDay]): Map[Team, TreeSet[MatchDay]] = ??? // TODO Write body
+  def mappedByParticipant(matchdays: List[MatchDay]): Map[Team, Set[MatchDay]] = ??? // TODO Write body
 
 }
