@@ -1,18 +1,26 @@
 package lesson
 
+
+import scala.collection.immutable.Seq
+
+
 case class MatchDay(day: Int, matches: List[Match]) extends Comparable[MatchDay] {
 
-  def numberOfMatches: Int = ??? // TODO Write body
+  private def teams: Set[Team] = matches.flatMap(_.teams).toSet
 
-  def numberOfTeams: Int = ??? // TODO Write body
+  def numberOfMatches: Int = matches.size
 
-  def numberOfGoals: Int = ??? // TODO Write body
+  def numberOfTeams: Int = teams.size
 
-  def addMatches(matchesToAdd: Match*): MatchDay = ??? // TODO Write body
+  def numberOfGoals: Int = matches.map(_.goals).sum
 
-  def teamsSortedByName: List[Team] = ??? // TODO Write body
+  def addMatches(matchesToAdd: Match*): MatchDay = {
+    copy(matches = matchesToAdd.toList ::: matches)
+  }
 
-  def compareTo(o: MatchDay): Int = ??? // TODO Write compareTo method based on [[Matchday.day]]
+  def teamsSortedByName: List[Team] = teams.toList.sortWith(_.name < _.name)
+
+  def compareTo(o: MatchDay): Int = day.compare(o.day)
 
 }
 
@@ -27,16 +35,27 @@ object MatchDay {
   /**
     * Returns the number of red cards per section, assuming a football halftime has a fixed duration of 45 minutes
     */
-  def redCardsPerSection(matchdays: List[MatchDay]): (Int, Int) = ??? // TODO Write body
+  def redCardsPerSection(matchdays: List[MatchDay]): (Int, Int) = {
+    val allRedCards: Seq[RedCard] = matchdays.flatMap(_.matches).flatMap(_.redCard)
+    val groupedBySection: Map[Boolean, Seq[RedCard]] = allRedCards.groupBy(_.minute > 45)
+    val counts: Iterable[Int] = groupedBySection.values.map(_.size)
+    val Seq(h1, h2) = counts.toSeq
+
+    (h1, h2)
+  }
 
   /**
     * Return a set of those teams which play on all given match days
     */
-  def playsOnAllMatchdays(matchdays: List[MatchDay]): Set[Team] = ??? // TODO Write body
+  def playsOnAllMatchdays(matchdays: List[MatchDay]): Set[Team] = matchdays.map(_.teams).reduce(_ intersect _)
 
   /**
     * Returns a map,
     */
-  def mappedByParticipant(matchdays: List[MatchDay]): Map[Team, Set[MatchDay]] = ??? // TODO Write body
+  def mappedByParticipant(matchdays: List[MatchDay]): Map[Team, Set[MatchDay]] = {
+    matchdays.flatMap(m => m.teams.map(p => (p, m)))
+      .groupBy(_._1)
+      .mapValues(_.map(_._2).toSet)
+  }
 
 }

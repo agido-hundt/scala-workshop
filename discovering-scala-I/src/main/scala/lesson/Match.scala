@@ -12,4 +12,10 @@ object Match {
   val match6 = Match(Team.Koeln, Team.Dortmund, 0, 3, Some(RedCard(44)))
 }
 
-case class Match(home: Team, away: Team, goalsHome: Int, goalsAway: Int, redCard: Option[RedCard] = None)
+case class Match(home: Team, away: Team, goalsHome: Int, goalsAway: Int, redCard: Option[RedCard] = None) {
+
+  def teams: Set[Team] = Set(home, away)
+
+  def goals: Int = goalsHome + goalsAway
+
+}
