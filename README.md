@@ -4,7 +4,7 @@
 * Install Java 8
 * Install current version of IntelliJ Idea Community Edition https://www.jetbrains.com/idea/specials/idea/whatsnew.html?landing#chooseYourEdition
 * After start, install the Scala Plugin ( Preferences -> Plugins -> Install Jetbrains Plugin -> Scala)
-* Close workshop repository
+* Clone workshop repository
 ```
 git clone https://github.com/agido/scala-workshop.git
 ```
