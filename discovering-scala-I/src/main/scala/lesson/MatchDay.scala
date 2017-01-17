@@ -14,7 +14,7 @@ case class MatchDay(day: Int, matches: List[Match]) extends Comparable[MatchDay]
 
   def teamsSortedByName: List[Team] = ??? // TODO Write body
 
-  override def compareTo(o: MatchDay): Int = ??? // TODO Write compareTo method based on [[Matchday.day]]
+  def compareTo(o: MatchDay): Int = ??? // TODO Write compareTo method based on [[Matchday.day]]
 
 }
 
