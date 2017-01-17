@@ -2,24 +2,14 @@
 
 ## Vorbereitung
 * Java8 installiert
-* IntelliJ Idea 15 Community Edition installiert https://www.jetbrains.com/idea/nextversion/
+* Aktuelle Version von IntelliJ Idea Community Edition installiert https://www.jetbrains.com/idea/specials/idea/whatsnew.html?landing#chooseYourEdition
 * Dort drin bitte das Scala-Plugin installieren ( Preferences -> Plugins -> Install Jetbrains Plugin -> Scala)
-* Workshop Repository klonen und Arbeitsbereich erstellen
+* Workshop Repository klonen
 ```
-1. git clone https://github.com/agido/scala-workshop.git
-2. git checkout -b <nachname>
+git clone https://github.com/agido/scala-workshop.git
 ```
-* Projekt in Idea importieren (Durch Auswahl des build.sbt Files)
+* Projekt in Idea importieren (Durch Auswahl des build.sbt Files eines der Unterordner)
 
-## Ablauf des Workshops
-* Kurze Scalasyntax Einführung
-* Implementierung einiger Funktionen, um Testfälle "grün" zu machen
-* Kurze Akka Einführung
-* Implementierung von Aktoren und deren Kommunikation
-* Eigenen Branch ins git Repository pushen, damit die verschiedenen Lösungen eingesehen werden können
-```
-1. git push origin <nachname>
-```
 ## Hilfreich
 * http://www.scalatutorial.de/index.html
 * http://docs.scala-lang.org/cheatsheets
