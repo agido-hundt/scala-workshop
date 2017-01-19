@@ -60,6 +60,25 @@ class MatchDaySpec extends FeatureSpec with GivenWhenThen {
       assert(participantsSortedByName.indexOf(Team.Schalke) == 5)
     }
 
+    scenario("Set of exciting matches") {
+      Given("Two matchdays1")
+      val matchDay = MatchDay.MatchDay1
+      val matchDay2 = MatchDay.MatchDay2
+
+      Then("Check number of redcards in section")
+      val excitingMatches = MatchDay.excitingMatches(matchDay :: matchDay2 :: Nil)
+      assert(excitingMatches == List(Match.match1))
+    }
+
+    scenario("Winning teams") {
+      Given("Two matchdays1")
+      val matchDay = MatchDay.MatchDay1
+
+      Then("Winner is called ")
+      val winnersOfDay = MatchDay.winners(matchDay)
+      assert(winnersOfDay == Set(Team.Koeln, Team.Leverkusen))
+    }
+
     scenario("Number of redcards in sections") {
       Given("Two matchdays1")
       val matchDay = MatchDay.MatchDay1
