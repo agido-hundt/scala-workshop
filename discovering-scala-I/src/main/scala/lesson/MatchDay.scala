@@ -32,6 +32,12 @@ object MatchDay {
 
   val MatchDay2: MatchDay = MatchDay(2, List[Match](Match.match4, Match.match5, Match.match6))
 
+  /** Returns a set of matches with more than 3 goals total */
+  def excitingMatches(matchDays: List[MatchDay]): List[Match] = ???
+
+  /** Returns a set of all winning teams of the given match day */
+  def winners(matchDay: MatchDay): Set[Team] = ???
+
   /**
     * Returns the number of red cards per section, assuming a football halftime has a fixed duration of 45 minutes
     */
@@ -57,5 +63,6 @@ object MatchDay {
       .groupBy(_._1)
       .mapValues(_.map(_._2).toSet)
   }
+
 
 }
